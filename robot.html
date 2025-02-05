@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Catch the Rain! - Robot</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js' defer></script>
+    <script src="assets/applyAutoRobot.js" defer></script>
+</head>
+
+<body onload="startGame();">
+    <!-- #region -->
+    <div class="gameContainer" id="gameContainer">
+        <div class="bucket" id="bucket">
+            <img src="./assets/bucket.png" alt="" srcset="" width="100px" height="100px">
+            <div class="bucketHitbox" id="bucketHitbox"></div>
+        </div>
+
+        <div class="grass" id="grass"></div>
+    </div>
+    <!-- #region end-->
+    <div class="gameOver" id="gameOver">
+        <h1>Game Over</h1>
+        <h3>Final Score:<span id="finalScore" class="finalScore"></span></h3>
+    </div>
+    <!--
+    <div class="gameStart" id="gameStart">
+        <h1>Catch the Rain!</h1>
+        <button onclick="document.getElementById('gameStart').style.display='none';">Start</button>
+    </div>
+    -->
+
+    <div class="robotIndicator" id="robotIndicator" onmouseenter="this.querySelector('h3').innerHTML='Turn off';"
+        onmouseleave="this.querySelector('h3').innerHTML='Robot running...';"
+        onclick="window.location.replace('Catch The Rain.html')">
+        <h3>Robot running... &nbsp;&nbsp;<span class="smallText" style="font-size:10px">Click me to turn off.</span>
+        </h3>
+    </div>
+
+    
+
+</body>
+
+</html>
