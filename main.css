@@ -83,6 +83,7 @@ div#gameStart button.primary {
     font-weight: bold;
     font-size: 25px;
     animation: buttonZoom 1s infinite cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    color: black;
 
 }
 
@@ -100,6 +101,7 @@ div#gameStart button.secondary {
     font-size: 16px;
     border-radius: 8px;
     transition: .3s;
+    color:black;
 }
 
 div#gameStart button.primary:hover {
