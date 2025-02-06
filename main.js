@@ -12,7 +12,7 @@ function createRaindrop() {
     if(isMobileDevice()){
         y = Math.random();
         if(y>0.5){
-            x = `${(1-y) * (window.screen.availWidth) +100 }px`;
+            x = `${(1-y) * (window.screen.availWidth) +50 }px`;
             raindrop.style.right = x;
         }else{
             x = `${y * (window.screen.availWidth - 100) }px`;
