@@ -9,7 +9,7 @@ function createRaindrop() {
 
     const raindrop = document.createElement('div');
     raindrop.classList.add('raindrop');
-    if(isMobileDevice()){
+    if (isMobileDevice()) {
         y = Math.random();
         x = `${Math.random() * (window.innerWidth - 100)}px`;
         raindrop.style.left = x;
@@ -17,10 +17,10 @@ function createRaindrop() {
         x = `${Math.random() * (window.innerWidth - 100)}px`;
         raindrop.style.left = x;
     }
-    
 
 
-    
+
+
     gameContainer.appendChild(raindrop);
     const hitbox = document.createElement('div');
     hitbox.classList.add('raindropHitbox');
@@ -103,6 +103,10 @@ function moveRaindrop(raindrop, hitbox) {
             score++; score++; score++; score++;
             console.log('Score:', score);
             document.getElementById('scoreSpan').innerHTML = score;
+            if (navigator.vibrate) {
+                
+                navigator.vibrate(200);
+            }
         }
     }, 50);
 }
@@ -118,7 +122,7 @@ function moveBucket(event) {
         newLeft = gameContainerWidth - bucketWidth;
     }
 
-    bucket.style.left = `${newLeft*1.1}px`;
+    bucket.style.left = `${newLeft * 1.1}px`;
 }
 
 gameContainer.addEventListener('mousemove', moveBucket);
@@ -256,14 +260,14 @@ function setBackground() {
     } else {
 
         const backgroundDiv = document.body;
-        
+
 
         backgroundDiv.style.backgroundImage = 'url("./assets/img2.jpeg")';
         backgroundDiv.style.backgroundSize = 'cover';
         backgroundDiv.style.backgroundAttachment = 'fixed';
 
-        
-        
+
+
     }
 }
 
