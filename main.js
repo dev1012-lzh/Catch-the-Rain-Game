@@ -235,6 +235,23 @@ document.addEventListener('keydown', (event) => {
 
 });
 
+function setBackground() {
+    const backgroundDiv = document.createElement('div');
+    backgroundDiv.style.position = 'absolute';
+    backgroundDiv.style.top = '0';
+    backgroundDiv.style.left = '0';
+    backgroundDiv.style.width = '100%';
+    backgroundDiv.style.height = '100vh';
+    
+    backgroundDiv.style.backgroundImage = 'url("./assets/img1.jpeg")';
+    backgroundDiv.style.backgroundSize = 'cover';
+    
+    backgroundDiv.style.zIndex = '-1';
+    document.body.appendChild(backgroundDiv);
+}
+
+setBackground();
+
 
 function getDeviceInfo() {
     const deviceInfo = {
@@ -243,6 +260,7 @@ function getDeviceInfo() {
         language: navigator.language,
         screenWidth: window.screen.width,
         screenHeight: window.screen.height,
+       
         colorDepth: window.screen.colorDepth
     };
     return deviceInfo;
