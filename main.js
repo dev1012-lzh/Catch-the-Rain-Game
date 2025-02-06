@@ -14,7 +14,7 @@ function createRaindrop() {
         if(y > 0.5){
             x = `${(1 - y) * (window.screen.availWidth - 100)}px`;
             raindrop.style.right = x;
-        } else {
+        } else if(y){
             x = `${y * (window.screen.availWidth - 100)}px`;
             raindrop.style.left = x;
         }
