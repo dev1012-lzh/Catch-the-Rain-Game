@@ -10,7 +10,7 @@ function createRaindrop() {
     const raindrop = document.createElement('div');
     raindrop.classList.add('raindrop');
     if(isMobileDevice()){
-        x = `${Math.random() * (window.screen.availWidth - 20) + 5}px`;
+        x = `${Math.random() * (window.screen.availWidth - 50) }px`;
     }else{
         x = `${Math.random() * (window.screen.availWidth - 200) + 50}px`;
     }
