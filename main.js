@@ -103,10 +103,10 @@ function moveRaindrop(raindrop, hitbox) {
             score++; score++; score++; score++;
             console.log('Score:', score);
             document.getElementById('scoreSpan').innerHTML = score;
-            if (navigator.vibrate) {
+            
                 
                 navigator.vibrate(200);
-            }
+            
         }
     }, 50);
 }
