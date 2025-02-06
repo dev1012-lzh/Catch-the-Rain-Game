@@ -10,7 +10,10 @@ function createRaindrop() {
 
     const raindrop = document.createElement('div');
     raindrop.classList.add('raindrop');
-    raindrop.style.left = `${Math.random() * 320 + 10}px`;
+    x=`${Math.random() * (window.screen.availWidth - 100)+50}px`;
+    
+    smallalert(x,0.5)
+    raindrop.style.left = x;
     gameContainer.appendChild(raindrop);
     const hitbox = document.createElement('div');
     hitbox.classList.add('raindropHitbox');
