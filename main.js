@@ -10,14 +10,24 @@ function createRaindrop() {
     const raindrop = document.createElement('div');
     raindrop.classList.add('raindrop');
     if(isMobileDevice()){
-        x = `${Math.random() * (window.screen.availWidth - 100) }px`;
+        y = Math.random();
+        if(y>0.5){
+            x = `${(1-y) * (window.screen.availWidth - 100) }px`;
+            raindrop.style.right = x;
+        }else{
+            x = `${y * (window.screen.availWidth - 100) }px`;
+            raindrop.style.left = x;
+        }
+        
+        
     }else{
         x = `${Math.random() * (window.screen.availWidth - 200) + 50}px`;
+        raindrop.style.left = x;
     }
     
 
 
-    raindrop.style.left = x;
+    
     gameContainer.appendChild(raindrop);
     const hitbox = document.createElement('div');
     hitbox.classList.add('raindropHitbox');
