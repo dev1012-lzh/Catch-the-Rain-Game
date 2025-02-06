@@ -3,16 +3,20 @@
 const gameContainer = document.getElementById('gameContainer');
 const bucket = document.getElementById('bucket');
 let score = 0;
-let interval = 0.7;
 
 
 function createRaindrop() {
 
     const raindrop = document.createElement('div');
     raindrop.classList.add('raindrop');
-    x=`${Math.random() * (window.screen.availWidth - 100)+50}px`;
+    if(isMobileDevice()){
+        x = `${Math.random() * (window.screen.availWidth - 20) + 5}px`;
+    }else{
+        x = `${Math.random() * (window.screen.availWidth - 200) + 50}px`;
+    }
     
-    smallalert(x,0.5)
+
+
     raindrop.style.left = x;
     gameContainer.appendChild(raindrop);
     const hitbox = document.createElement('div');
@@ -111,22 +115,13 @@ function moveBucket(event) {
         newLeft = gameContainerWidth - bucketWidth;
     }
 
-    bucket.style.left = `${newLeft}px`;
+    bucket.style.left = `${newLeft*1.1}px`;
 }
 
 gameContainer.addEventListener('mousemove', moveBucket);
 
 
 let gameOver = false;
-
-
-const raindropInterval = setInterval(() => {
-    if (localStorage.getItem('gameStatus') === 'start') {
-        if (!gameOver) {
-            createRaindrop();
-        }
-    }
-}, interval * 1000);
 
 
 
@@ -239,18 +234,34 @@ document.addEventListener('keydown', (event) => {
 });
 
 function setBackground() {
-    const backgroundDiv = document.createElement('div');
-    backgroundDiv.style.position = 'absolute';
-    backgroundDiv.style.top = '0';
-    backgroundDiv.style.left = '0';
-    backgroundDiv.style.width = '100%';
-    backgroundDiv.style.height = '100vh';
-    
-    backgroundDiv.style.backgroundImage = 'url("./assets/img1.jpeg")';
-    backgroundDiv.style.backgroundSize = 'cover';
-    
-    backgroundDiv.style.zIndex = '-1';
-    document.body.appendChild(backgroundDiv);
+
+
+    if (isMobileDevice()) {
+
+        const backgroundDiv = document.createElement('div');
+        backgroundDiv.style.position = 'absolute';
+        backgroundDiv.style.top = '0';
+        backgroundDiv.style.left = '0';
+        backgroundDiv.style.width = '100%';
+        backgroundDiv.style.height = '100vh';
+
+        backgroundDiv.style.backgroundImage = 'url("./assets/img1.jpeg")';
+        backgroundDiv.style.backgroundSize = 'cover';
+
+        backgroundDiv.style.zIndex = '-1';
+        document.body.appendChild(backgroundDiv);
+    } else {
+
+        const backgroundDiv = document.body;
+        
+
+        backgroundDiv.style.backgroundImage = 'url("./assets/img2.jpeg")';
+        backgroundDiv.style.backgroundSize = 'cover';
+        backgroundDiv.style.backgroundAttachment = 'fixed';
+
+        
+        
+    }
 }
 
 setBackground();
@@ -263,7 +274,7 @@ function getDeviceInfo() {
         language: navigator.language,
         screenWidth: window.screen.width,
         screenHeight: window.screen.height,
-       
+
         colorDepth: window.screen.colorDepth
     };
     return deviceInfo;
@@ -287,3 +298,20 @@ if (isMobileDevice()) {
 } else {
     console.log("Not a Mobile Device");
 }
+
+let interval;
+
+if (isMobileDevice()) {
+    interval = 0.4;
+} else {
+    interval = 0.6;
+}
+
+const raindropInterval = setInterval(() => {
+    if (localStorage.getItem('gameStatus') === 'start') {
+        if (!gameOver) {
+            createRaindrop();
+        }
+    }
+}, interval * 1000);
+
